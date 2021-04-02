@@ -1,9 +1,18 @@
 
+//Validar si estamos en PD o DEV
+var url = window.location.href;
+var swLocation = '/twettor/sw.js';
+
 
 //Valido si existe el service worker
 //en caso contrario se instala nuevamente.
 if (navigator.serviceWorker){
-    navigator.serviceWorker.register('/sw.js');
+
+   if (url.includes('localhost')){
+       swLocation = '/sw.js';
+   }
+
+    navigator.serviceWorker.register(swLocation);
     
 }
 
